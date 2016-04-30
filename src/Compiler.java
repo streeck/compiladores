@@ -289,6 +289,12 @@ public class Compiler {
 
   public ExpressionStatement expression() {
     SimpleExpression simExpr = simpleExpression();
+    lexer.nextToken();
+
+    if(lexer.token != Symbol.SEMICOLON)
+      error.signal("';' expected");
+    lexer.nextToken();
+
     String relOp = null;
     ExpressionStatement expr = null;
 
@@ -374,8 +380,9 @@ public class Compiler {
     LValue lvalue = leftValue();
     String currentToken = null;
 
-    // if(lexer.token != Symbol.ASSIGN)
-      // error.signal("':=' expected");
+    if(lexer.token != Symbol.ASSIGN)
+      error.signal("':=' expected");
+    lexer.nextToken();
 
     // 'readInteger' '(' ')' | 'readDouble' '(' ')' | 'readChar' '(' ')'
     if(lexer.token == Symbol.READINTEGER ||
@@ -451,8 +458,8 @@ public class Compiler {
   public Numberino number() {
     Integer multiplier = 1;
 
-    if(lexer.token != Symbol.PLUS ||
-    lexer.token != Symbol.MINUS ||
+    if(lexer.token != Symbol.PLUS &&
+    lexer.token != Symbol.MINUS &&
     lexer.token != Symbol.NUMBER)
       error.signal("Number expected");
 

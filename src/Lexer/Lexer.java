@@ -6,6 +6,7 @@ Vitor Kusiaki             RA: 408140
 package Lexer;
 
 import java.util.*;
+
 import AST.*;
 
 public class Lexer {
@@ -210,6 +211,16 @@ public class Lexer {
                         stringValue = "||";
                     } else
                         error.signal("| expected");
+                    break;
+                case '\'':
+                    if(Character.isLetter(input[tokenPos]) || Character.isDigit(input[tokenPos])) {
+                        charValue = input[tokenPos];
+                        tokenPos++;
+                        if(input[tokenPos] != '\'')
+                            error.signal("Strings are not supported");
+                    }
+                    token = Symbol.APOSTROPHE;
+                    tokenPos++;
                     break;
                 default:
                     error.signal("Invalid character: '" + c + "'");

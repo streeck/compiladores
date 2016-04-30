@@ -27,6 +27,7 @@ public enum Symbol {
   SEMICOLON(";"),
   COMMA(","),
   DOT("."),
+  APOSTROPHE("'"),
   LEFTBRACKET("["),
   RIGHTBRACKET("]"),
   LEFTPAR("("),

@@ -427,6 +427,10 @@ public class Compiler {
 
       return new ExpressionFactor(lvalue, expr);
     }
+    // Char
+    else if(lexer.token == Symbol.APOSTROPHE) {
+      return new CharFactor(lvalue, lexer.getCharValue());
+    }
     // Expr
     else if(lexer.token == Symbol.IDENT)
       return new CompositeFactor(lvalue, leftValue());

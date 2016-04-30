@@ -64,7 +64,7 @@ public class Lexer {
         if(c == '\0')
             token = Symbol.EOF;
         else if(input[tokenPos] == '/' && input[tokenPos + 1] == '/') {
-            // single line coment found
+            // single line comment found
             while(input[tokenPos] != '\0' && input[tokenPos] != '\n')
                 tokenPos++;
             nextToken();
@@ -88,7 +88,7 @@ public class Lexer {
             lineNumber = lineNumber + commentLines + 1;
             nextToken();
         } else if(Character.isLetter(c)) {
-            StringBuffer ident = new StringBuffer();
+            StringBuilder ident = new StringBuilder();
             while(Character.isLetter(input[tokenPos]) ||
                 input[tokenPos] == '_' ||
                 Character.isDigit(input[tokenPos])) {
@@ -103,7 +103,7 @@ public class Lexer {
             else
                 token = value;
         } else if(Character.isDigit(c)) {
-            StringBuffer number = new StringBuffer();
+            StringBuilder number = new StringBuilder();
             while(Character.isDigit(input[tokenPos])) {
                 number.append(input[tokenPos]);
                 tokenPos++;
@@ -180,6 +180,7 @@ public class Lexer {
                         stringValue = ":=";
                     } else
                         error.signal("'=' expected");
+                    break;
                 case ';':
                     token = Symbol.SEMICOLON;
                     break;
@@ -241,7 +242,7 @@ public class Lexer {
             if ( i >= input.length )
                 i = input.length;
 
-        StringBuffer line = new StringBuffer();
+        StringBuilder line = new StringBuilder();
         // go to the beginning of the line
         while ( i >= 1 && input[i] != '\n' )
             i--;

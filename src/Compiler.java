@@ -289,6 +289,7 @@ public class Compiler {
 
   public ExpressionStatement expression() {
     SimpleExpression simExpr = simpleExpression();
+
     lexer.nextToken();
 
     if(lexer.token != Symbol.SEMICOLON)
@@ -381,7 +382,7 @@ public class Compiler {
     String currentToken = null;
 
     if(lexer.token != Symbol.ASSIGN)
-      error.signal("':=' expected");
+    error.signal("':=' expected");
     lexer.nextToken();
 
     // 'readInteger' '(' ')' | 'readDouble' '(' ')' | 'readChar' '(' ')'
@@ -479,8 +480,11 @@ public class Compiler {
     StringBuffer number = new StringBuffer();
     number.append(lexer.getNumberValue());
 
-    if(lexer.token == Symbol.DOT) {
-      number.append(lexer.getNumberValue());
+//    lexer.nextToken();
+
+    if(lexer.peakNextToken() == '.') {
+      lexer.nextToken();
+      number.append(lexer.getCharValue());
       lexer.nextToken();
 
       if(lexer.token != Symbol.NUMBER)

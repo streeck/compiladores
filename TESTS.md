@@ -11,8 +11,8 @@
 - [x] ERRLEX08.txt
 - [x] ERRLEX09.txt
 - [ ] ERRSEM01.txt
-- [ ] ERRSEM02.txt
-- [ ] ERRSEM03.txt
+- [x] ERRSEM02.txt
+- [x] ERRSEM03.txt
 - [ ] ERRSEM04.txt
 - [ ] ERRSEM05.txt
 - [ ] ERRSEM06.txt
@@ -28,7 +28,7 @@
 - [ ] ERRSEM16.txt
 - [ ] ERRSEM17.txt
 - [ ] OKLEX01.txt
-- [ ] OKLEX02.txt
+- [x] OKLEX02.txt
 - [ ] OKLEX03.txt
 - [ ] OKSEM01.txt
 - [ ] OKSEM02.txt

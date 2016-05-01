@@ -266,4 +266,8 @@ public class Lexer {
         }
         return line.toString();
     }
+
+    public Character peakNextToken() {
+        return input[tokenPos];
+    }
 }
